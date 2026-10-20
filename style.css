@@ -296,3 +296,13 @@ body {
     font-size: 1.7rem;
   }
 }
+/* Logo dans l'en-tête */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.
+
+
