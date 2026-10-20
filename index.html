@@ -1,1 +1,121 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOYA SARL - Collecte des déchets et assainissement</title>
+  <meta name="description" content="MOYA SARL, entreprise ivoirienne de collecte des déchets ménagers et d'assainissement.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="entete">
+    <div class="conteneur entete-contenu">
+      <a href="#accueil" class="logo">MOYA <span>SARL</span></a>
+      <button id="bouton-menu" class="bouton-menu" aria-label="Ouvrir le menu">&#9776;</button>
+      <nav id="menu" class="menu">
+        <a href="#apropos">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#zones">Zones</a>
+        <a href="#equipe">Équipe</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="accueil" class="accueil">
+      <div class="conteneur">
+        <h1>Pour des villes plus propres</h1>
+        <p>MOYA SARL assure la collecte des déchets ménagers et l'assainissement en Côte d'Ivoire.</p>
+        <a href="#contact" class="bouton">Nous contacter</a>
+      </div>
+    </section>
+
+    <section id="apropos" class="section">
+      <div class="conteneur">
+        <h2>À propos</h2>
+        <p>MOYA SARL est une entreprise ivoirienne spécialisée dans la collecte des déchets ménagers et l'assainissement. Elle est membre du groupement ECOTI SA.</p>
+      </div>
+    </section>
+
+    <section id="services" class="section section-grise">
+      <div class="conteneur">
+        <h2>Nos services</h2>
+        <div class="cartes">
+          <article class="carte">
+            <h3>Collecte des déchets ménagers</h3>
+            <p>Ramassage des déchets des ménages dans nos zones d'intervention.</p>
+          </article>
+          <article class="carte">
+            <h3>Assainissement</h3>
+            <p>Actions pour maintenir un cadre de vie sain et propre.</p>
+          </article>
+          <article class="carte">
+            <h3>Balayage</h3>
+            <p>Nettoyage des voies et espaces publics par nos balayeuses.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="zones" class="section">
+      <div class="conteneur">
+        <h2>Zones d'intervention</h2>
+        <ul class="zones">
+          <li>Abobo</li>
+          <li>Bouaké</li>
+          <li>Daloa</li>
+          <li>San Pedro</li>
+        </ul>
+        <p class="note">Les zones exactes sont à confirmer par l'entreprise.</p>
+      </div>
+    </section>
+
+    <section id="equipe" class="section section-grise">
+      <div class="conteneur">
+        <h2>Notre équipe</h2>
+        <div class="cartes">
+          <article class="carte"><h3>Balayeuses</h3></article>
+          <article class="carte"><h3>Éboueurs</h3></article>
+          <article class="carte"><h3>Chauffeurs d'engins</h3></article>
+          <article class="carte"><h3>Agents administratifs</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="conteneur">
+        <h2>Contact</h2>
+        <p>Téléphone : À renseigner<br>E-mail : À renseigner<br>Adresse : À renseigner</p>
+
+        <form id="formulaire" class="formulaire">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" required>
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" required></textarea>
+
+          <button type="submit" class="bouton">Envoyer</button>
+          <p id="retour" class="retour"></p>
+        </form>
+        <p class="note">Formulaire de démonstration : les messages ne sont pas encore envoyés.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pied">
+    <div class="conteneur">
+      <p>&copy; <span id="annee"></span> MOYA SARL - Membre du groupement ECOTI SA</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
