@@ -295,14 +295,20 @@ body {
   .accueil h1 {
     font-size: 1.7rem;
   }
-}
-/* Logo dans l'en-tête */
+}/* Logo dans l'en-tête */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-.
+.logo-img {
+  height: 45px;
+  width: auto;
+  max-width: 100%;
+}
+
+}
+
+
 
 
