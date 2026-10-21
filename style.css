@@ -308,3 +308,33 @@ body {
     font-size: 1.7rem;
   }
 }
+/* Contact : boutons d'action */
+.contact-infos {
+  margin: 10px 0 15px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.bouton-vert {
+  background: var(--vert);
+  color: var(--blanc);
+}
+
+.bouton-vert:hover {
+  background: var(--vert-fonce);
+}
+
+.bouton-whatsapp {
+  background: #25d366;
+  color: var(--blanc);
+}
+
+.bouton-whatsapp:hover {
+  background: #1da851;
+}
+
