@@ -338,6 +338,105 @@ if (cadrePub) {
     }
   });
 }
+// Musique de fond de la présentation
+if (document.getElementById("pub-lecture") && document.getElementById("pub-musique")) {
+  const boutonLectureMusique = document.getElementById("pub-lecture");
+  const boutonMusique = document.getElementById("pub-musique");
+
+  const musique = new Audio("musique.mp3");
+  musique.loop = true;
+
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  const VOLUME = 0.22;
+  let contexte = null;
+  let gain = null;
+  let version = 0;
+  let musiqueActive = true;
+
+  // Prépare le réglage du volume (nécessaire sur iPhone)
+  function preparer() {
+    if (contexte || !AudioCtx) {
+      return;
+    }
+    contexte = new AudioCtx();
+    const source = contexte.createMediaElementSource(musique);
+    gain = contexte.createGain();
+    gain.gain.value = 0;
+    source.connect(gain);
+    gain.connect(contexte.destination);
+  }
+
+  function jouerMusique() {
+    version++;
+    preparer();
+    if (contexte && contexte.state === "suspended") {
+      contexte.resume();
+    }
+    musique.currentTime = 0;
+    if (gain) {
+      gain.gain.cancelScheduledValues(contexte.currentTime);
+      gain.gain.setValueAtTime(0, contexte.currentTime);
+      gain.gain.linearRampToValueAtTime(VOLUME, contexte.currentTime + 1.5);
+    } else {
+      musique.volume = VOLUME;
+    }
+    const essai = musique.play();
+    if (essai && essai.catch) {
+      essai.catch(function () {});
+    }
+  }
+
+  function couperMusique() {
+    const v = ++version;
+    if (gain) {
+      gain.gain.cancelScheduledValues(contexte.currentTime);
+      gain.gain.setValueAtTime(gain.gain.value, contexte.currentTime);
+      gain.gain.linearRampToValueAtTime(0, contexte.currentTime + 1.2);
+      setTimeout(function () {
+        if (v === version) {
+          musique.pause();
+        }
+      }, 1300);
+    } else {
+      musique.pause();
+    }
+  }
+
+  function presentationEnCours() {
+    return boutonLectureMusique.textContent.indexOf("Arrêter") !== -1;
+  }
+
+  // Démarre ou arrête la musique avec le bouton de la présentation
+  boutonLectureMusique.addEventListener("click", function () {
+    if (presentationEnCours()) {
+      if (musiqueActive) {
+        jouerMusique();
+      }
+    } else {
+      couperMusique();
+    }
+  });
+
+  // Coupe la musique en douceur quand la présentation se termine
+  new MutationObserver(function () {
+    if (boutonLectureMusique.textContent.indexOf("Revoir") !== -1) {
+      couperMusique();
+    }
+  }).observe(boutonLectureMusique, { childList: true, characterData: true, subtree: true });
+
+  // Bouton pour activer ou couper la musique
+  boutonMusique.addEventListener("click", function () {
+    musiqueActive = !musiqueActive;
+    boutonMusique.textContent = musiqueActive ? "🎵 Musique activée" : "🎵 Musique coupée";
+    if (presentationEnCours()) {
+      if (musiqueActive) {
+        jouerMusique();
+      } else {
+        couperMusique();
+      }
+    }
+  });
+}
 
 
 
