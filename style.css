@@ -382,6 +382,16 @@ body {
 #devis .bouton {
   margin-top: 15px;
 }
+/* Couleurs harmonisées avec le logo (bleu marine + vert) */
+:root {
+  --vert-fonce: #263f73;
+}
+
+.accueil {
+  background:
+    linear-gradient(rgba(38, 63, 115, 0.8), rgba(46, 125, 50, 0.7)),
+    url("014EE513-08CF-48C5-ABB8-2A3ED34D950D.png") center / cover no-repeat;
+}
 
 
 
