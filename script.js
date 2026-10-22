@@ -53,3 +53,58 @@ document.querySelectorAll("[data-devis]").forEach(function (lien) {
   const texte = "Bonjour MOYA SARL, je souhaite un devis pour : ";
   lien.href = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(texte);
 });
+// Présentation animée
+const presentation = document.getElementById("presentation");
+
+if (presentation) {
+  const zonesPres = presentation.querySelectorAll(".pres-zones li");
+  const compteur = document.getElementById("compteur");
+  const boutonRejouer = document.getElementById("rejouer");
+  let minuteur;
+
+  // Donne un numéro d'ordre à chaque ville pour les faire apparaître une à une
+  zonesPres.forEach(function (li, i) {
+    li.style.setProperty("--i", i);
+  });
+
+  // Compteur de localités : suit l'apparition des villes
+  function compter() {
+    clearInterval(minuteur);
+    let n = 0;
+    compteur.textContent = "0";
+    setTimeout(function () {
+      minuteur = setInterval(function () {
+        n++;
+        compteur.textContent = n;
+        if (n >= zonesPres.length) {
+          clearInterval(minuteur);
+        }
+      }, 250);
+    }, 1800);
+  }
+
+  // Lance (ou relance) toute l'animation
+  function lancer() {
+    presentation.classList.remove("actif");
+    void presentation.offsetWidth;
+    presentation.classList.add("actif");
+    compter();
+  }
+
+  if ("IntersectionObserver" in window) {
+    const observateur = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (entree) {
+        if (entree.isIntersecting) {
+          lancer();
+          observateur.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    observateur.observe(presentation);
+  } else {
+    lancer();
+  }
+
+  boutonRejouer.addEventListener("click", lancer);
+}
+
