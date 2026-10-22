@@ -378,7 +378,10 @@ body {
     bottom: 90px;
   }
 }
-
+/* Section devis */
+#devis .bouton {
+  margin-top: 15px;
+}
 
 
 
