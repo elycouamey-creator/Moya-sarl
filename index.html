@@ -115,7 +115,39 @@
 
         <form id="formulaire" class="formulaire">
           <label for="nom">Nom</label>
-          <input type="text" id="nom" required>
+          <form id="formulaire" class="formulaire">
+  <label for="nom">Nom</label>
+  <input type="text" id="nom" required>
+
+  <label for="zone">Votre zone</label>
+  <select id="zone" required>
+    <option value="">Choisir...</option>
+    <option>Abobo</option>
+    <option>Bouaké</option>
+    <option>Daloa</option>
+    <option>San Pedro</option>
+    <option>Aboisso</option>
+    <option>Bonoua</option>
+    <option>Autre</option>
+  </select>
+
+  <label for="demande">Votre demande</label>
+  <select id="demande" required>
+    <option value="">Choisir...</option>
+    <option>Enlèvement de déchets</option>
+    <option>Signalement d'un dépôt sauvage</option>
+    <option>Demande de devis</option>
+    <option>Autre</option>
+  </select>
+
+  <label for="message">Message</label>
+  <textarea id="message" rows="4" required></textarea>
+
+  <button type="submit" class="bouton">Envoyer par WhatsApp</button>
+  <p id="retour" class="retour"></p>
+</form>
+<p class="note">Votre message s'ouvre dans WhatsApp : vous le vérifiez avant de l'envoyer. (Numéro d'essai pour l'instant.)</p>
+          
 
           <label for="email">E-mail</label>
           <input type="email" id="email" required>
@@ -137,7 +169,7 @@
       <p>&copy; <span id="annee"></span> MOYA SARL - Membre du groupement ECOTI SA</p>
     </div>
   </footer>
-
+<a href="https://wa.me/2250000000000" class="whatsapp-flottant" data-whatsapp target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">WhatsApp</a>
   <script src="script.js"></script>
 </body>
 </html>
