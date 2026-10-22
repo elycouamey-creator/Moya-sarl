@@ -325,6 +325,19 @@ if (pub) {
     boutonSon.textContent = voixActive ? "🔊 Voix activée" : "🔇 Voix coupée";
   });
 }
+// Toucher le cadre lance aussi la présentation
+const cadrePub = document.getElementById("pub");
+
+if (cadrePub) {
+  cadrePub.addEventListener("click", function (evenement) {
+    if (!evenement.target.closest("a")) {
+      const bouton = document.getElementById("pub-lecture");
+      if (bouton.textContent.indexOf("Arrêter") === -1) {
+        bouton.click();
+      }
+    }
+  });
+}
 
 
 
