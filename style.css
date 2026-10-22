@@ -392,6 +392,140 @@ body {
     linear-gradient(rgba(38, 63, 115, 0.8), rgba(46, 125, 50, 0.7)),
     url("014EE513-08CF-48C5-ABB8-2A3ED34D950D.png") center / cover no-repeat;
 }
+/* Présentation animée */
+.presentation {
+  background: linear-gradient(160deg, #1b2d56, #263f73);
+  color: var(--blanc);
+  text-align: center;
+  padding: 70px 0;
+  overflow: hidden;
+}
+
+.pres-logo {
+  display: inline-block;
+  background: var(--blanc);
+  padding: 14px 22px;
+  border-radius: 16px;
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.pres-logo img {
+  display: block;
+  height: 70px;
+  width: auto;
+}
+
+.pres-slogan {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 25px 0 10px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.pres-compteur {
+  font-size: 1.1rem;
+  opacity: 0;
+}
+
+.pres-zones {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.pres-zones li {
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid #9dc15c;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(15px) scale(0.9);
+}
+
+.pres-zones li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9dc15c;
+  margin-right: 8px;
+}
+
+.pres-rejouer {
+  background: none;
+  color: var(--blanc);
+  border: 2px solid var(--blanc);
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.pres-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 15px;
+  opacity: 0.8;
+}
+
+/* Les animations démarrent quand la section est visible */
+.presentation.actif .pres-logo {
+  animation: pres-zoom 0.9s ease forwards;
+}
+
+.presentation.actif .pres-slogan {
+  animation: pres-monte 0.8s ease 0.9s forwards;
+}
+
+.presentation.actif .pres-compteur {
+  animation: pres-monte 0.6s ease 1.6s forwards;
+}
+
+.presentation.actif .pres-zones li {
+  animation: pres-pop 0.5s ease forwards;
+  animation-delay: calc(1.8s + var(--i) * 0.25s);
+}
+
+.presentation.actif .pres-zones li::before {
+  animation: pres-pulse 2s ease-in-out infinite;
+}
+
+@keyframes pres-zoom {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pres-monte {
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes pres-pop {
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes pres-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(157, 193, 92, 0.7); }
+  50% { box-shadow: 0 0 0 6px rgba(157, 193, 92, 0); }
+}
+
+/* Pour les personnes qui désactivent les animations */
+@media (prefers-reduced-motion: reduce) {
+  .pres-logo,
+  .pres-slogan,
+  .pres-compteur,
+  .pres-zones li {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+}
 
 
 
