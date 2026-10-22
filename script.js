@@ -347,7 +347,7 @@ if (document.getElementById("pub-lecture") && document.getElementById("pub-musiq
   musique.loop = true;
 
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  const VOLUME = 0.22;
+  const VOLUME = 0.45;
   let contexte = null;
   let gain = null;
   let version = 0;
