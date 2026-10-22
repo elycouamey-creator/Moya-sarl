@@ -48,3 +48,8 @@ formulaire.addEventListener("submit", function (evenement) {
   window.open(lien, "_blank");
   retour.textContent = "WhatsApp s'ouvre avec votre message prêt à envoyer.";
 });
+// Bouton devis : ouvre WhatsApp avec un message de départ
+document.querySelectorAll("[data-devis]").forEach(function (lien) {
+  const texte = "Bonjour MOYA SARL, je souhaite un devis pour : ";
+  lien.href = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(texte);
+});
